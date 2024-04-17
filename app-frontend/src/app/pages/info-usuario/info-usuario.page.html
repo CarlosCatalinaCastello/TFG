@@ -1,0 +1,63 @@
+<app-navbar-avatar></app-navbar-avatar>
+
+<ion-content *ngIf="!loginUp">
+  <form [formGroup]="formUser" (ngSubmit)="updateInfoUser()">
+    <ion-toolbar>
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-floating mb-3">
+            <ion-input label="Actividad" labelPlacement="floating" type="text" formControlName="actividad" id="actividad" class="form-control"
+                       placeholder="actividad">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-floating mb-3">
+            <ion-input label="Peso" labelPlacement="floating" type="text" formControlName="peso" id="peso" class="form-control" placeholder="peso">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-floating mb-3">
+            <ion-input label="Sexo" labelPlacement="floating" type="text" formControlName="sexo" id="sexo" class="form-control" placeholder="sexo">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-floating mb-3">
+            <ion-input label="Edad" labelPlacement="floating" type="text" formControlName="edad" id="edad" class="form-control" placeholder="edad">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-floating mb-3">
+            <ion-input label="Altura" labelPlacement="floating" type="text" formControlName="altura" id="altura" class="form-control" placeholder="altura">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-floating mb-3">
+            <ion-input label="Objetivo" labelPlacement="floating" type="text" formControlName="objetivo" id="objetivo" class="form-control" placeholder="objetivo">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-button type="submit">Save</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </form>
+</ion-content>
+

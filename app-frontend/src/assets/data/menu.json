@@ -1,0 +1,27 @@
+[
+  {
+  "nombre": "Información del usuario",
+  "icon" : "",
+  "ruta" : "/info-usuario"
+  },
+  {
+    "nombre": "Calculadoras",
+    "icon" : "",
+    "ruta" : "/calculadora-tabs"
+  },
+  {
+    "nombre": "Agregar comidas",
+    "icon" : "",
+    "ruta" : "/agregar-comida"
+  },
+  {
+    "nombre": "Calendario",
+    "icon" : "",
+    "ruta" : "usuario"
+  },
+  {
+    "nombre": "Logout",
+    "icon" : "",
+    "ruta" : ""
+  }
+]

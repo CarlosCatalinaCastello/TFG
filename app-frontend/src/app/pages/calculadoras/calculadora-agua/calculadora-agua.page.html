@@ -1,0 +1,21 @@
+<app-navbar [titulo]="'Calculadora de Agua'"></app-navbar>
+
+<ion-content class="padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Peso (kg)</ion-label>
+          <ion-input type="number" [(ngModel)]="peso"></ion-input>
+        </ion-item>
+        <ion-button expand="full" (click)="calcularCantidadAgua()">Calcular</ion-button>
+      </ion-list>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item *ngIf="cantidadAguaLitros !== null">
+        <ion-label>Los litros recomendados de agua al día son:  <b>{{ cantidadAguaLitros }}</b> </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

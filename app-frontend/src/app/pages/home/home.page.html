@@ -1,0 +1,28 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar class="col-header">
+    <ion-avatar>
+      <ion-img src="/assets/icon/fitguru1.png" alt="img-logo"></ion-img>
+    </ion-avatar>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="menuLateral" color="primary"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding ion-justify-content-center">
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" size="large" fill="solid" color="secondary" routerLink="/agregar-comida">Agregar
+        comidas
+      </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button expand="block" size="large" fill="solid" color="secondary" routerLink="/calendario">Calendario
+      </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button expand="block" size="large" fill="solid" routerLink="/calculadora-tabs">Calculadoras
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

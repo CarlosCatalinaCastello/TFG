@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@swimlane/ngx-charts": "^20.5.0",
+    "apexcharts": "^3.46.0",
+    "ng-apexcharts": "^1.9.0"
+  }
+}

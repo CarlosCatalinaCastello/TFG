@@ -1,0 +1,24 @@
+<app-navbar [titulo]="'Calculadora IMC'"></app-navbar>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-input label="Peso (kg)" labelPlacement="stacked" type="text" [(ngModel)]="peso"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Altura (cm)" labelPlacement="stacked" type="text" [(ngModel)]="altura"></ion-input>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="full" (click)="calcularIMC()">Calcular IMC</ion-button>
+
+      <ion-item>
+        <ion-label>Tu IMC es:</ion-label>
+        <ion-text>{{ resultado }}</ion-text>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
