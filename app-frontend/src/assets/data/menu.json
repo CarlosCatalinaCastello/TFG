@@ -1,27 +1,27 @@
 [
   {
-  "nombre": "Información del usuario",
-  "icon" : "",
-  "ruta" : "/info-usuario"
-  },
-  {
-    "nombre": "Calculadoras",
-    "icon" : "",
-    "ruta" : "/calculadora-tabs"
-  },
-  {
     "nombre": "Agregar comidas",
-    "icon" : "",
+    "icon" : "document-outline",
     "ruta" : "/agregar-comida"
   },
   {
+    "nombre": "Calculadoras",
+    "icon" : "calculator-outline",
+    "ruta" : "/calculadora-tabs"
+  },
+  {
     "nombre": "Calendario",
-    "icon" : "",
+    "icon" : "calendar-outline",
     "ruta" : "usuario"
   },
   {
-    "nombre": "Logout",
-    "icon" : "",
-    "ruta" : ""
+    "nombre": "Información del usuario",
+    "icon" : "cog-outline",
+    "ruta" : "/info-usuario"
+  },
+  {
+    "nombre": "Información/Consejos Nutricionales",
+    "icon" : "information-circle-outline",
+    "ruta" : "info-nutricion"
   }
 ]

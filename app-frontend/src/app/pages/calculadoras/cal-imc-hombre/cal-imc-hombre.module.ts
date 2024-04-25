@@ -8,6 +8,7 @@ import { CalIMCHombrePageRoutingModule } from './cal-imc-hombre-routing.module';
 
 import { CalIMCHombrePage } from './cal-imc-hombre.page';
 import {ComponentsModule} from "../../../components/components.module";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
     imports: [
@@ -16,7 +17,9 @@ import {ComponentsModule} from "../../../components/components.module";
         IonicModule,
         CalIMCHombrePageRoutingModule,
         ReactiveFormsModule,
-        ComponentsModule
+        ComponentsModule,
+      MatExpansionModule
+
     ],
   declarations: [CalIMCHombrePage]
 })

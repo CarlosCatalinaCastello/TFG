@@ -66,8 +66,23 @@ const routes: Routes = [
     canMatch: [userGuard]
   },
   {
-    path: 'lista-alimentos',
+    path: 'lista-alimentos/:id',
     loadChildren: () => import('./pages/comidas/lista-alimentos/lista-alimentos.module').then( m => m.ListaAlimentosPageModule),
+    canMatch: [userGuard]
+  },
+  {
+    path: 'info-nutricion',
+    loadChildren: () => import('./pages/info-nutricion/info-nutricion.module').then( m => m.InfoNutricionPageModule),
+    canMatch: [userGuard]
+  },
+  {
+    path: 'detalles-comida/:id',
+    loadChildren: () => import('./pages/comidas/detalles-comida/detalles-comida.module').then( m => m.DetallesComidaPageModule),
+    canMatch: [userGuard]
+  },
+  {
+    path: 'formulario-alimentos/:id',
+    loadChildren: () => import('./pages/comidas/formulario-alimentos/formulario-alimentos.module').then( m => m.FormularioAlimentosPageModule),
     canMatch: [userGuard]
   }
 ];

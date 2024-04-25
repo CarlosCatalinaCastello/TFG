@@ -1,21 +1,31 @@
 ion-toolbar{
   display: flex;
   justify-content: center;
-  height: 120px;
+  height: 110px;
 }
-ion-img{
-  margin-left: 160px;
-  width: 90px;
-  height: 90px;
+.img{
+  margin-left: 100px;
+  width: 100px;
+  height: 100px;
   margin-top: 10%;
   margin-bottom: 10%;
 }
-ion-col, ion-button{
+.width-img{
   width: 400px;
   height: 200px;
+}
+ion-icon{
+  width: 35px;
+  height: 35px;
+  margin-left: 15px;
+  margin-top: 10%;
+}
+.btn-width{
+  width: 400px;
+  height: 100px;
   margin-top: 15px;
+  margin-left: 10px;
 }
-.calendario{
-  background: url("/assets/icon/logo-lego.png");
-}
+
+
 

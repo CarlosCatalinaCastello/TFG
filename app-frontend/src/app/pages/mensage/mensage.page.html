@@ -1,22 +1,39 @@
+
 <ion-content *ngIf="!loginUp">
   <mat-horizontal-stepper>
 
     <form [formGroup]="formUser" >
       <mat-step label="Address">
+        <ion-avatar>
+          <ion-img src="\assets\icon\fitguru1.png"></ion-img>
+        </ion-avatar>
         <ion-card class="ion-text-center">
           <ion-card-header>
             <ion-card-title>BIENVENIDO A FITGURU</ion-card-title>
           </ion-card-header>
           <ion-content>
-            <ion-card-subtitle>Bienvenido a nuestra App, la funcion principal que tenemos nosotros es facilitarte y hacer que te sea mas llevadero hacer una dieta.</ion-card-subtitle>
+            <ion-card-subtitle>
+              ¡Bienvenido a nuestra aplicación! Estamos emocionados de tenerte aquí. En nuestra plataforma,
+              nuestra principal función es hacer que tu experiencia con la dieta sea más fácil y llevadera.
+              Nos esforzamos por proporcionarte herramientas y recursos que simplifiquen el proceso de seguimiento
+              de tu alimentación y te ayuden a alcanzar tus objetivos de salud de manera efectiva.
+              Nuestra aplicación está diseñada para brindarte apoyo y motivación en cada paso del camino,
+              asegurándonos de que te sientas respaldado mientras trabajas en mejorar tu bienestar.
+            </ion-card-subtitle>
           </ion-content>
         </ion-card>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext>Siguiente</button>
+        <button routerLink="/home"><b>Cerrar</b></button>
       </mat-step>
 
       <mat-step label="Objetivo">
-        <ion-item class="ion-text-center">
+        <ion-avatar>
+          <ion-img src="\assets\icon\fitguru1.png"></ion-img>
+        </ion-avatar>
+        <ion-item class="position-item">
           <ion-label>¿Qué objetivo tienes?</ion-label>
+        </ion-item>
+        <ion-item class="ion-text-center">
           <ion-select formControlName="objetivo" id="objetivo" class="form-control"
                       label="objetivo">
             <ion-select-option value="perder peso">Perder peso</ion-select-option>
@@ -26,13 +43,18 @@
         </ion-item>
 
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperPrevious>Atras</button>
+          <button mat-button matStepperNext>Siguiente</button>
+          <button routerLink="/home"><b>Cerrar</b></button>
+
         </div>
 
       </mat-step>
       <mat-step label="Actividad">
-        <ion-item class="ion-text-center">
+        <ion-avatar>
+          <ion-img src="\assets\icon\fitguru1.png"></ion-img>
+        </ion-avatar>
+        <ion-item class="position-item">
           <ion-label>¿Qué actividad física tienes?</ion-label>
           <ion-select formControlName="actividad" id="actividad" class="form-control"
                       label="actividad">
@@ -43,16 +65,19 @@
         </ion-item>
 
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperPrevious>Atras</button>
+          <button mat-button matStepperNext>Siguiente</button>
+          <button routerLink="/home"><b>Cerrar</b></button>
         </div>
 
       </mat-step>
       <mat-step label="Sexo/Edad">
-
+        <ion-avatar>
+          <ion-img src="\assets\icon\fitguru1.png"></ion-img>
+        </ion-avatar>
         <ion-row>
           <ion-col>
-            <ion-item class="form-floating mb-3">
+            <ion-item class="form-floating mb-3 ">
               <ion-input type="text" formControlName="sexo" id="sexo" class="form-control" placeholder="sexo">
               </ion-input>
             </ion-item>
@@ -67,15 +92,19 @@
           </ion-col>
         </ion-row>
 
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperPrevious>Atras</button>
+        <button mat-button matStepperNext>Siguiente</button>
+        <button routerLink="/home"><b>Cerrar</b></button>
+
       </mat-step>
 
       <mat-step label="Altura/Peso">
-
+        <ion-avatar>
+          <ion-img src="\assets\icon\fitguru1.png"></ion-img>
+        </ion-avatar>
         <ion-row>
           <ion-col>
-            <ion-item class="form-floating mb-3">
+            <ion-item class="form-floating mb-3 ">
               <ion-input type="text" formControlName="altura" id="altura" class="form-control" placeholder="altura">
               </ion-input>
             </ion-item>
@@ -90,9 +119,8 @@
           </ion-col>
         </ion-row>
 
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-        <ion-button (click)="onSubmit()">Aceptar</ion-button>
+        <button mat-button matStepperPrevious>Atras</button>
+        <ion-button (click)="onSubmit()" routerLink="/home">Aceptar</ion-button>
       </mat-step>
     </form>
   </mat-horizontal-stepper>

@@ -19,7 +19,6 @@ export interface BloqueComida{
   comida: Comida[]
 }
 export interface Comida{
-  id_Comida: string
   nombre: string
   tipo: string
   descripcion: string

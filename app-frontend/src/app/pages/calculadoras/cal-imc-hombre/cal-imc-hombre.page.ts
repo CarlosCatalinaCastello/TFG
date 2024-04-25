@@ -18,8 +18,8 @@ export class CalIMCHombrePage implements OnInit{
 
   calcularIMC() {
     // Convertir altura y peso a números
-    const alturaCm = parseFloat(this.info_user.altura) || parseFloat(this.altura);
-    const peso = parseFloat(this.info_user.peso) || parseFloat(this.peso);
+    const alturaCm = parseFloat(this.altura);
+    const peso = parseFloat(this.peso);
 
     // Convertir altura a metros (ya que la fórmula del IMC requiere la altura en metros)
     const alturaMetros = alturaCm / 100;
@@ -39,8 +39,6 @@ export class CalIMCHombrePage implements OnInit{
       this.resultado = 'Por favor, ingrese valores válidos para altura y peso.';
     }
   }
-
-
 
   ngOnInit(): void {
     this.loadInfoUser();

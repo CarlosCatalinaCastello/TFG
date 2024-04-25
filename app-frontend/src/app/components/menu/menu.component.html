@@ -9,11 +9,14 @@
     <ion-list>
       <ion-menu-toggle *ngFor="let ml of menu">
         <ion-item [routerLink]="ml.ruta">
-          <ion-icon slot="start" [name]="ml.icono"></ion-icon>
+          <ion-icon slot="start" [name]="ml.icon"></ion-icon>
           <ion-label>{{ml.nombre}}</ion-label>
         </ion-item>
       </ion-menu-toggle>
+      <ion-item (click)="logout()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        <ion-label>Logout</ion-label>
+      </ion-item>
     </ion-list>
-    <!--<ion-button (click)="logout()" class="ion-justify-content-center">Logout</ion-button>-->
   </ion-content>
 </ion-menu>

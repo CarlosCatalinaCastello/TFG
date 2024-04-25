@@ -1,4 +1,16 @@
-<app-navbar [titulo]="'Calcuadora TMB'"></app-navbar>
+<ion-header [translucent]="true" class="ion-no-border ion-text-center">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center ion-text-capitalize">
+      CALCULADORA TMB
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="menuLateral" color="primary"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content class="ion-padding">
   <ion-card>
@@ -29,11 +41,26 @@
     <ion-card-content>
       <ion-button expand="full" (click)="calcularRMB()">Calcular RMB</ion-button>
 
-      <ion-item *ngIf="rmb !== null">
+      <ion-item *ngIf="rmb">
         <ion-label>RMB:</ion-label>
         <ion-label>{{ rmb }}</ion-label>
       </ion-item>
     </ion-card-content>
   </ion-card>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Información
+    </mat-expansion-panel-header>
+    <ion-title>
+      <b>TMB</b>
+    </ion-title>
+    <ion-label>El Tasa Metabólica Basal (TMB) es la cantidad de calorías que el cuerpo necesita en reposo para mantener funciones
+    vitales como la respiración y la circulación. Se calcula teniendo en cuenta factores como el peso, la altura, la edad y el sexo.
+    Conocer tu TMB te ayuda a establecer un punto de partida para planificar tu ingesta calórica diaria y alcanzar metas de
+    peso o salud. Sin embargo, es importante recordar que el TMB es solo una parte de la ecuación y que las necesidades calóricas
+    pueden variar según el nivel de actividad física y otros factores individuales.</ion-label>
+    <ion-img src="\assets\img\tmb.PNG" class="img-card"></ion-img>
+  </mat-expansion-panel>
 </ion-content>
 

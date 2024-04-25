@@ -1,4 +1,16 @@
-<app-navbar [titulo]="'Calculadora IMC'"></app-navbar>
+<ion-header [translucent]="true" class="ion-no-border ion-text-center">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center ion-text-capitalize">
+      CALCULADORA IMC
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="menuLateral" color="primary"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content class="ion-padding">
   <ion-card>
@@ -14,11 +26,26 @@
     <ion-card-content>
       <ion-button expand="full" (click)="calcularIMC()">Calcular IMC</ion-button>
 
-      <ion-item>
+      <ion-item *ngIf="resultado">
         <ion-label>Tu IMC es:</ion-label>
-        <ion-text>{{ resultado }}</ion-text>
+        <ion-text>{{resultado}}</ion-text>
       </ion-item>
     </ion-card-content>
   </ion-card>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>Información</mat-expansion-panel-header>
+    <ion-title>
+      <b>INFORMACIÓN</b>
+    </ion-title>
+        <ion-label>Calcular el Índice de Masa Corporal (IMC) es útil para evaluar la salud del peso corporal.
+          Esta medida se obtiene dividiendo el peso (en kilogramos) entre la altura al cuadrado (en metros).
+          Un IMC dentro del rango saludable (18.5 a 24.9) indica un peso adecuado para la altura,
+          mientras que valores fuera de este rango pueden indicar bajo peso, sobrepeso u obesidad.
+          Sin embargo, el IMC tiene limitaciones y no considera la composición corporal,
+          por lo que es importante interpretarlo junto con otros factores de salud y
+          consultar a un profesional médico para obtener una evaluación completa.</ion-label>
+        <ion-img src="\assets\img\imc.jpg" class="img-card"></ion-img>
+  </mat-expansion-panel>
 </ion-content>
 

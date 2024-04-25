@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Usuario} from "../../../common/interfaces";
+import {DataService} from "../../../services/data.service";
 
 @Component({
   selector: 'app-calculadora-tmb',
@@ -12,6 +14,8 @@ export class CalculadoraTMBPage implements OnInit {
   edad!: string;
   sexo!: string;
   rmb!: number | null;
+
+  info_user!: Usuario;
 
   calcularRMB() {
     const pesoNum = parseFloat(this.peso);
@@ -32,9 +36,18 @@ export class CalculadoraTMBPage implements OnInit {
       this.rmb = null;
     }
   }
-  constructor() { }
+  constructor(private service: DataService) { }
 
   ngOnInit() {
+    this.loadInfoUser();
   }
 
+  private loadInfoUser() {
+    this.info_user = this.service.usuario;
+    this.peso = this.info_user.peso;
+    this.altura = this.info_user.altura;
+    this.edad = this.info_user.edad;
+    this.sexo = this.info_user.sexo;
+    console.log(this.info_user)
+  }
 }

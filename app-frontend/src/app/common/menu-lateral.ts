@@ -1,5 +1,5 @@
 export interface MenuLateral {
   nombre: string;
-  icono: string;
+  icon: string;
   ruta: string;
 }

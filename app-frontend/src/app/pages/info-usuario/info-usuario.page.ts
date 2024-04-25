@@ -10,7 +10,6 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class InfoUsuarioPage implements OnInit {
   info_user!: Usuario;
-  //mirar para que sirve esta funcion
   loginUp: boolean = true;
   editar = false;
 
@@ -24,7 +23,6 @@ export class InfoUsuarioPage implements OnInit {
     peso: ['']
   });
   constructor(private service: DataService, private formbuilder: FormBuilder) {
-    //Para poder sacar toda la informacion del usuario por pantalla
 
   }
   ngOnInit() {
@@ -72,19 +70,6 @@ export class InfoUsuarioPage implements OnInit {
   private loadUser() {
     console.log(this.service.usuario)
     this.formUser.patchValue(this.service.usuario);
-
-    /*this.service.usuario.suscribe({
-    next: value => {
-         this.formUser.patchValue(value);
-        },
-        error: err => {
-          console.log(err);
-        },
-        complete: () => {
-          console.log('Done');
-        }
-
-    })*/
     this.loginUp = false;
   }
 }

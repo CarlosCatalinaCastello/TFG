@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {BloqueComida, Comida, Usuario} from "../../../common/interfaces";
 import {DataService} from "../../../services/data.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
+import {IonModal} from "@ionic/angular";
 
 @Component({
   selector: 'app-agregar-comida',
@@ -10,65 +11,28 @@ import {Router} from "@angular/router";
   styleUrls: ['./agregar-comida.page.scss'],
 })
 export class AgregarComidaPage implements OnInit {
+  @ViewChild(IonModal) modal!: IonModal;
 
 comida!: Usuario;
 bloqueComida: BloqueComida[] = [];
 comidas: Comida[] = [];
 
+  habilitado: boolean = false;
 
   formComida: FormGroup = this.formbuilder.group({
-    _id: [''],
     bloqueComida: this.formbuilder.group({
-      nombreBloque: [''],
-      comida: this.formbuilder.group({
-        id_Comida: [''],
-        nombre: [''],
-        tipo: [''],
-        descripcion: [''],
-        img: [''],
-        grasa: [''],
-        carbohidrato: [''],
-        proteina: [''],
-        cantidad: ['']
-      })
+      nombreBloque: ['']
     })
   });
 
   get nombreBloque(){
-    return this.formComida.get('objetivo');
+    return this.formComida.get('nombreBloque');
   }
-  get id_Comida(){
-    return this.formComida.get('id_Comida');
-  }
-  get nombre(){
-    return this.formComida.get('nombre');
-  }
-  get tipo(){
-    return this.formComida.get('tipo');
-  }
-  get descripcion(){
-    return this.formComida.get('descripcion');
-  }
-  get img(){
-    return this.formComida.get('peso');
-  }
-  get grasa(){
-    return this.formComida.get('grasa');
-  }
-  get carbohidrato(){
-    return this.formComida.get('carbohidrato');
-  }
-  get proteina(){
-    return this.formComida.get('proteina');
-  }
-  get cantidad(){
-    return this.formComida.get('cantidad');
-  }
+
   constructor(private service: DataService, private formbuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.loadBloqueComida();
-    this.loadAlimentos();
   }
 
 
@@ -79,23 +43,19 @@ comidas: Comida[] = [];
     console.log(this.comida)
     console.log(this.bloqueComida)
     console.log(this.comidas)
-
-
-  }
-
-  private loadAlimentos() {
-
   }
 
   addBloqueComida() {
 
-    //this.bloqueComida.push(this.formComida.getRawValue());
+    this.bloqueComida.push(this.formComida.getRawValue()['bloqueComida']);
+    const user = {bloqueComida: this.bloqueComida};
 
-    //const user = {_id: this.comida._id, bloqueComida: this.bloqueComida};
-
-    this.service.updateUser(this.formComida.getRawValue()).subscribe({
+    // bloque comida actualizado con todo lo que este en la api
+    console.log(user)
+    this.service.updateBloqueComida(user, this.comida._id).subscribe({
       next: value => {
         console.log(value)
+        console.log(this.nombreBloque)
         this.loadBloqueComida();
         alert(value.status);
       },
@@ -108,7 +68,40 @@ comidas: Comida[] = [];
     })
   }
 
+  deleteBloqueComida(bloque: BloqueComida){
+    if (confirm('Desea borrar la comida' + bloque.nombreBloque + '?')) {
+      this.service.deleteComida(bloque._id).subscribe({
+        next: value => {
+          this.loadBloqueComida();
+          alert(value.status);
+        },
+        error: err => {
+          console.log(err);
+        },
+        complete: () => {
+          console.log('Done');
+        }
+      });
+    }
+  }
+
   goListComida(id?: string) {
     this.router.navigate(["lista-alimentos/" + id]);
+  }
+
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
+    this.loadBloqueComida();
+  }
+
+  goDetallesComida(id?: string) {
+    this.router.navigate(["detalles-comida/" + id]);
+  }
+
+  reordenar(event: any) {
+    const itemMover =
+      this.bloqueComida.splice(event.detail.from,1)[0];
+    this.bloqueComida.splice(event.detail.to,0,itemMover);
+    event.detail.complete();
   }
 }

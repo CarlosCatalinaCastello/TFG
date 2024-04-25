@@ -1,6 +1,39 @@
-ion-button{
-  margin-left: 20px;
-}
+
 ion-toolbar{
   margin-top: 20px;
+}
+ion-icon{
+  width: 25px;
+  height: 25px;
+}
+.margin-left{
+  margin-left: 10px;
+}
+ion-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  margin-right: 120px;
+}
+ion-card-content {
+  padding: 15px;
+}
+ion-label {
+  font-size: 1rem;
+  color: #333;
+  margin-right: 10px;
+}
+ion-title{
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+ion-header{
+  height: 170px;
+}
+.margin-title{
+  margin-bottom: 20px;
 }

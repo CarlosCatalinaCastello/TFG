@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {DataService} from "../../../services/data.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Alimentos} from "../../../common/alimentos";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {BloqueComida, Comida, Usuario} from "../../../common/interfaces";
+import {IonModal} from "@ionic/angular";
 
 @Component({
   selector: 'app-lista-alimentos',
@@ -8,13 +12,115 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./lista-alimentos.page.scss'],
 })
 export class ListaAlimentosPage implements OnInit {
-id!: string;
-  constructor(private service: DataService, private ruta: ActivatedRoute) { }
+  @ViewChild(IonModal) modal!: IonModal;
+
+  id!: string;
+  comida: Comida[] = [];
+  user!: Usuario;
+  bloqueComida!: BloqueComida;
+  alimentos: Alimentos[] = [];
+
+
+  formComida: FormGroup = this.formbuilder.group({
+    bloqueComida: this.formbuilder.group({
+      nombreBloque: [''],
+      comida: this.formbuilder.group({
+        nombre: [''],
+        tipo: [''],
+        descripcion: [''],
+        img: [''],
+        grasa: [''],
+        proteina: [''],
+        carbohidrato: [''],
+        cantidad: [''],
+      })
+    })
+  });
+
+  //Getters
+  get nombre() {
+    return this.formComida.get('nombre');
+  }
+
+  get tipo() {
+    return this.formComida.get('tipo');
+  }
+
+  get descripcion() {
+    return this.formComida.get('descripcion');
+  }
+
+  get img() {
+    return this.formComida.get('img');
+  }
+
+  get grasa() {
+    return this.formComida.get('grasa');
+  }
+
+  get proteina() {
+    return this.formComida.get('proteina');
+  }
+
+  get carbohidrato() {
+    return this.formComida.get('carbohidrato');
+  }
+
+  get cantidad() {
+    return this.formComida.get('cantidad');
+  }
+
+  constructor(private service: DataService, private ruta: ActivatedRoute, private formbuilder: FormBuilder,
+    private router: Router) {
+  }
 
   ngOnInit() {
-    this.ruta.params.subscribe(params =>{
+    this.ruta.params.subscribe(params => {
       this.id = params['id']
+    });
+
+    this.loadAlimentos();
+  }
+
+  addAlimento() {
+    this.alimentos.push(this.formComida.getRawValue()['comida']);
+    const alimento = {alimento: this.comida};
+
+    this.service.updateAlimento(alimento, this.user._id).subscribe({
+      next: value => {
+        console.log(value)
+        alert(value.status);
+      },
+      error: err => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('Done');
+      }
     });
   }
 
+
+  private loadAlimentos() {
+    this.service.getAlimentos().subscribe({
+      next: value => {
+        this.alimentos = value;
+      },
+      error: err => {
+        console.log(err)
+      },
+      complete: () => {
+        console.log('Get Alimentos')
+      }
+    })
+  }
+
+  goFormAlimento(id?: string) {
+    this.router.navigate(["formulario-alimentos/" + id]);
+  }
+
+
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
+  }
 }

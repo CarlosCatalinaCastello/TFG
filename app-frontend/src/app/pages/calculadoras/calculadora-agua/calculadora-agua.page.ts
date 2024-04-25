@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Usuario} from "../../../common/interfaces";
+import {DataService} from "../../../services/data.service";
 
 @Component({
   selector: 'app-calculadora-agua',
@@ -8,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class CalculadoraAguaPage implements OnInit {
   peso!: string;
   cantidadAguaLitros!: string | number;
+  info_user!: Usuario;
+
   calcularCantidadAgua(): void {
     if (this.peso) {
 
@@ -22,9 +26,15 @@ export class CalculadoraAguaPage implements OnInit {
       this.cantidadAguaLitros = "";
     }
   }
-  constructor() { }
+  constructor(private service: DataService) { }
 
   ngOnInit() {
+    this.loadInfoUser();
   }
 
+  private loadInfoUser() {
+    this.info_user = this.service.usuario;
+    this.peso = this.info_user.peso;
+    console.log(this.info_user)
+  }
 }

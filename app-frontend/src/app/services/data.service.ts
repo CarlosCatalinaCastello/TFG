@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Usuario} from "../common/interfaces";
+import {BloqueComida, Comida, Usuario} from "../common/interfaces";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {MenuLateral} from "../common/menu-lateral";
+import {Alimentos} from "../common/alimentos";
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,11 @@ import {MenuLateral} from "../common/menu-lateral";
 export class DataService {
   private urlUser = 'http://localhost:3000/api/login/';
   private urlOneUser = 'http://localhost:3000/api/login/user/';
+  private urlAlimentos = 'http://localhost:3000/api/comidas/';
 
   token: string = '';
   usuario!: Usuario;
+  alimento!: Alimentos;
   constructor(private http: HttpClient, private router: Router) { }
 
   registro(usuario: Usuario): Promise<any>{
@@ -90,20 +93,38 @@ export class DataService {
 
 
 
-  getUser(): Observable<Usuario>{
-    return this.http.get<Usuario>(this.urlUser);
+  getAlimentos(): Observable<Alimentos[]>{
+    return this.http.get<Alimentos[]>(this.urlAlimentos);
+  }
+  getOneAlimento(id?: string): Observable<Alimentos>{
+    return this.http.get<Alimentos>(this.urlAlimentos+id);
   }
 
   public getOneUser(id?: string):Observable<Usuario>{
     return this.http.get<Usuario>(this.urlOneUser+id);
   }
   updateUser(user: Usuario): Observable<ResponseApiFull>{
+    console.log(user)
     return this.http.patch<ResponseApiFull>(this.urlUser+user._id, user);
   }
+  updateBloqueComida(user: { bloqueComida: BloqueComida[] }, id: string): Observable<ResponseApiFull>{
+    console.log(user)
+    return this.http.patch<ResponseApiFull>(this.urlUser+id, user);
+  }
+
+  updateAlimento(user: { alimento: Comida[] }, id: string): Observable<ResponseApiFull>{
+    console.log(user)
+    return this.http.patch<ResponseApiFull>(this.urlUser+id, user);
+  }
+
 
   //Menú lateral
   getMenuLateral(): Observable<MenuLateral[]>{
     return this.http.get<MenuLateral[]>('/assets/data/menu.json');
+  }
+
+  deleteComida(id: string): Observable<ResponseApi>{
+    return this.http.delete<ResponseApi>(this.urlUser+id);
   }
 
 
@@ -111,4 +132,7 @@ export class DataService {
 interface ResponseApiFull{
   status: string;
   data: Usuario;
+}
+interface ResponseApi{
+  status: string;
 }

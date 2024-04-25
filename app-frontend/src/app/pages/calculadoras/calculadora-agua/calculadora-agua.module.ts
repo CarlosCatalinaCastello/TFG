@@ -8,6 +8,7 @@ import { CalculadoraAguaPageRoutingModule } from './calculadora-agua-routing.mod
 
 import { CalculadoraAguaPage } from './calculadora-agua.page';
 import {ComponentsModule} from "../../../components/components.module";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   imports: [
@@ -15,7 +16,9 @@ import {ComponentsModule} from "../../../components/components.module";
     FormsModule,
     IonicModule,
     CalculadoraAguaPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    MatExpansionModule
+
   ],
   declarations: [CalculadoraAguaPage]
 })

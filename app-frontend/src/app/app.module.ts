@@ -14,10 +14,11 @@ import {
   ScheduleModule, RecurrenceEditorModule, DayService, WeekService,
   WorkWeekService, MonthService, MonthAgendaService, DragAndDropService, ResizeService
 } from '@syncfusion/ej2-angular-schedule';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, MatStepperModule,
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, MatStepperModule,  MatExpansionModule,
     ComponentsModule, ScheduleModule, RecurrenceEditorModule, ScheduleModule],
   providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, provideAnimationsAsync(),
     DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService,DragAndDropService, ResizeService],

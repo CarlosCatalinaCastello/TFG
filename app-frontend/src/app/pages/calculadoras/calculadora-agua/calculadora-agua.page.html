@@ -1,4 +1,16 @@
-<app-navbar [titulo]="'Calculadora de Agua'"></app-navbar>
+<ion-header [translucent]="true" class="ion-no-border ion-text-center">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center ion-text-capitalize">
+      CALCULADORA DE AGUA
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="menuLateral" color="primary"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content class="padding">
   <ion-card>
@@ -12,10 +24,22 @@
       </ion-list>
     </ion-card-header>
     <ion-card-content>
-      <ion-item *ngIf="cantidadAguaLitros !== null">
-        <ion-label>Los litros recomendados de agua al día son:  <b>{{ cantidadAguaLitros }}</b> </ion-label>
+      <ion-item *ngIf="cantidadAguaLitros">
+        <ion-label>Los litros recomendados de agua al día son:  <b>{{cantidadAguaLitros}}</b> </ion-label>
       </ion-item>
     </ion-card-content>
   </ion-card>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Información
+    </mat-expansion-panel-header>
+    <ion-label>Saber cuánta agua debemos beber en un día es crucial para mantenernos hidratados y saludables.
+      El agua es esencial para funciones corporales como la digestión, la circulación sanguínea y la regulación de la temperatura.
+      Beber suficiente agua ayuda a prevenir la deshidratación y apoya la salud general, incluida la piel y la función cognitiva.
+      Sin embargo, las necesidades individuales pueden variar según factores como la actividad física y el clima,
+      por lo que es recomendable buscar orientación personalizada de un profesional de la salud.</ion-label>
+    <ion-img src="\assets\img\agua.jpg" class="img-card"></ion-img>
+  </mat-expansion-panel>
 </ion-content>
 

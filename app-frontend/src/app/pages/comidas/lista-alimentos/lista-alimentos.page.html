@@ -1,13 +1,25 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-title>lista-alimentos</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/agregar-comida"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="text-center">Lista de Alimentos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">lista-alimentos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-list>
+      <ion-list-header>
+        <ion-searchbar placeholder="Busca por nombre de alimento..."></ion-searchbar>
+      </ion-list-header>
+      <ion-item *ngFor="let ali of alimentos">
+        <ion-avatar>
+          <ion-img [src]="ali.img"></ion-img>
+        </ion-avatar>
+        <ion-label>{{ali.nombre}}</ion-label>
+        <ion-button (click)="goFormAlimento(ali._id)">+</ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>

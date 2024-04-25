@@ -8,6 +8,7 @@ import { CalculadoraTMBPageRoutingModule } from './calculadora-tmb-routing.modul
 
 import { CalculadoraTMBPage } from './calculadora-tmb.page';
 import {ComponentsModule} from "../../../components/components.module";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
     imports: [
@@ -15,7 +16,9 @@ import {ComponentsModule} from "../../../components/components.module";
         FormsModule,
         IonicModule,
         CalculadoraTMBPageRoutingModule,
-        ComponentsModule
+        ComponentsModule,
+      MatExpansionModule
+
     ],
   declarations: [CalculadoraTMBPage]
 })

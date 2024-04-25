@@ -23,6 +23,7 @@ export class MenuComponent  implements OnInit {
     this.service.getMenuLateral().subscribe({
       next: value => {
         this.menu = value;
+        console.log(this.menu)
       },
       error: err => {
         console.log('Error')
