@@ -1,14 +1,17 @@
+
 <ion-header class="ion-no-border ion-text-center">
-  <ion-row class="ion-margin-top">
-    <ion-col class="col-header">
-      <ion-avatar>
-        <ion-img src="/assets/icon/fitguru1.png" alt="img-logo" style="width: 100%; height: 100%; margin-top: 10%"></ion-img>
-      </ion-avatar>
-    </ion-col>
-  </ion-row>
-  <ion-buttons slot="start">
-    <ion-back-button defaultHref="/{{pagina}}"></ion-back-button>
-  </ion-buttons>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-row class="ion-margin-top">
+      <ion-col class="col-header">
+        <ion-avatar>
+          <ion-img src="/assets/icon/fitguru1.png" alt="img-logo" style="width: 100%; height: 100%; margin-top: 10%"></ion-img>
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -29,7 +32,7 @@
       <ion-col>
         <ion-col class="margin-bottom">
           <div class="ion-text-center">
-            <ion-button class="btn-success" type="submit" (click)="login()">Login</ion-button>
+            <ion-button class="btn-success" shape="round" type="submit" (click)="login()">Login</ion-button>
           </div>
         </ion-col>
       </ion-col>

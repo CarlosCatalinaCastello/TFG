@@ -10,7 +10,7 @@
   </ion-toolbar>
   <ion-row>
     <ion-col>
-      <ion-button expand="block" size="large" id="open-modal">AÑADIR BLOQUE DE COMIDA</ion-button>
+      <ion-button expand="block" size="large" id="open-modal" color="secondary" class="button-addBlock">AÑADIR BLOQUE DE COMIDA</ion-button>
     </ion-col>
   </ion-row>
 </ion-header>
@@ -25,7 +25,6 @@
         <ion-row>
           <ion-col>
             <ion-icon name="add-circle-outline" (click)="goListComida(comida._id)"></ion-icon>
-            <!--Se le añade el id del bloque para que no coja todos los que tiene el usuario, sino que coja simplemente el que quieres ver la información -->
             <ion-icon class="margin-left" name="color-wand-outline" (click)="goDetallesComida(bloque._id)"></ion-icon>
           </ion-col>
           <ion-col>

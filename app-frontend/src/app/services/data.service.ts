@@ -13,6 +13,9 @@ export class DataService {
   private urlUser = 'http://localhost:3000/api/login/';
   private urlOneUser = 'http://localhost:3000/api/login/user/';
   private urlAlimentos = 'http://localhost:3000/api/comidas/';
+  private urlOneAlimento = 'http://localhost:3000/api/comidas/comida/';
+  private urlOneBloqueComida = 'http://localhost:3000/api/login/bloque/';
+
 
   token: string = '';
   usuario!: Usuario;
@@ -92,22 +95,28 @@ export class DataService {
   }
 
 
-
+//interfaz de las comidas almacenadas en la web
   getAlimentos(): Observable<Alimentos[]>{
     return this.http.get<Alimentos[]>(this.urlAlimentos);
   }
   getOneAlimento(id?: string): Observable<Alimentos>{
-    return this.http.get<Alimentos>(this.urlAlimentos+id);
+    return this.http.get<Alimentos>(this.urlOneAlimento+id);
   }
-
   public getOneUser(id?: string):Observable<Usuario>{
     return this.http.get<Usuario>(this.urlOneUser+id);
+  }
+  public getOneBloque(id?: string):Observable<BloqueComida>{
+    return this.http.get<BloqueComida>(this.urlOneBloqueComida+id);
   }
   updateUser(user: Usuario): Observable<ResponseApiFull>{
     console.log(user)
     return this.http.patch<ResponseApiFull>(this.urlUser+user._id, user);
   }
   updateBloqueComida(user: { bloqueComida: BloqueComida[] }, id: string): Observable<ResponseApiFull>{
+    console.log(user)
+    return this.http.patch<ResponseApiFull>(this.urlUser+id, user);
+  }
+  updateAlimentos(user: { alimento: Comida[] }, id: string): Observable<ResponseApiFull>{
     console.log(user)
     return this.http.patch<ResponseApiFull>(this.urlUser+id, user);
   }

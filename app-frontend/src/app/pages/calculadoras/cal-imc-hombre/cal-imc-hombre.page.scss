@@ -2,5 +2,11 @@
   margin-top: 20px;
 }
 mat-expansion-panel{
-  margin-top: 40px;
+  margin: 40px 10px 10px;
+  background-color: #e3e3e3;
+}
+
+mat-expansion-panel-header{
+  background-color: #ffffff;
+  color: #0d0d0d;
 }
