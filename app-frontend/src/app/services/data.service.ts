@@ -102,12 +102,21 @@ export class DataService {
   getOneAlimento(id?: string): Observable<Alimentos>{
     return this.http.get<Alimentos>(this.urlOneAlimento+id);
   }
-  public getOneUser(id?: string):Observable<Usuario>{
+  addAlimento(alimento: Alimentos): Observable<ResponseApi>{
+    return this.http.post<ResponseApi>(this.urlAlimentos, alimento);
+  }
+
+
+
+  getOneUser(id?: string):Observable<Usuario>{
     return this.http.get<Usuario>(this.urlOneUser+id);
   }
-  public getOneBloque(id?: string):Observable<BloqueComida>{
+  getOneBloque(id?: string):Observable<BloqueComida>{
     return this.http.get<BloqueComida>(this.urlOneBloqueComida+id);
   }
+
+
+
   updateUser(user: Usuario): Observable<ResponseApiFull>{
     console.log(user)
     return this.http.patch<ResponseApiFull>(this.urlUser+user._id, user);
@@ -120,7 +129,6 @@ export class DataService {
     console.log(user)
     return this.http.patch<ResponseApiFull>(this.urlUser+id, user);
   }
-
   updateAlimento(user: { alimento: Comida[] }, id: string): Observable<ResponseApiFull>{
     console.log(user)
     return this.http.patch<ResponseApiFull>(this.urlUser+id, user);

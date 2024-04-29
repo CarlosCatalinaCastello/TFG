@@ -16,23 +16,19 @@
   <ion-card>
     <ion-card-header>
       <ion-item>
-        <ion-label position="floating">Peso (kg)</ion-label>
-        <ion-input type="number" [(ngModel)]="peso"></ion-input>
+        <ion-input label="Peso (kg)" type="number" [(ngModel)]="peso"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Altura (cm)</ion-label>
-        <ion-input type="number" [(ngModel)]="altura"></ion-input>
+        <ion-input label="Altura (cm)" type="number" [(ngModel)]="altura"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Edad (años)</ion-label>
-        <ion-input type="number" [(ngModel)]="edad"></ion-input>
+        <ion-input label="Edad (años)" type="number" [(ngModel)]="edad"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>Sexo</ion-label>
-        <ion-select [(ngModel)]="sexo">
+        <ion-select label="Sexo" [(ngModel)]="sexo">
           <ion-select-option value="hombre">Hombre</ion-select-option>
           <ion-select-option value="mujer">Mujer</ion-select-option>
         </ion-select>

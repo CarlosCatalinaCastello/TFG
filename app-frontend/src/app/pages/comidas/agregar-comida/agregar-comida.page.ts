@@ -17,7 +17,6 @@ comida!: Usuario;
 bloqueComida: BloqueComida[] = [];
 comidas: Comida[] = [];
 
-  habilitado: boolean = false;
 
   formComida: FormGroup = this.formbuilder.group({
     bloqueComida: this.formbuilder.group({
@@ -98,10 +97,4 @@ comidas: Comida[] = [];
     this.router.navigate(["detalles-comida/" + id]);
   }
 
-  reordenar(event: any) {
-    const itemMover =
-      this.bloqueComida.splice(event.detail.from,1)[0];
-    this.bloqueComida.splice(event.detail.to,0,itemMover);
-    event.detail.complete();
-  }
 }

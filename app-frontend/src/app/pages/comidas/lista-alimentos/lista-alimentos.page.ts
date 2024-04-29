@@ -13,6 +13,7 @@ import {IonModal} from "@ionic/angular";
 })
 export class ListaAlimentosPage implements OnInit {
   @ViewChild(IonModal) modal!: IonModal;
+  filtroAlimento= '';
 
   id!: string;
   comida: Comida[] = [];
@@ -22,53 +23,39 @@ export class ListaAlimentosPage implements OnInit {
 
 
   formComida: FormGroup = this.formbuilder.group({
-    bloqueComida: this.formbuilder.group({
-      nombreBloque: [''],
-      comida: this.formbuilder.group({
-        nombre: [''],
-        tipo: [''],
-        descripcion: [''],
-        img: [''],
-        grasa: [''],
-        proteina: [''],
-        carbohidrato: [''],
-        cantidad: [''],
-      })
-    })
+    _id: [''],
+    nombre: [''],
+    tipo: [''],
+    descripcion: [''],
+    img: [''],
+    proteina: [''],
+    carbohidrato: [''],
+    grasa: ['']
   });
 
   //Getters
   get nombre() {
     return this.formComida.get('nombre');
   }
-
   get tipo() {
     return this.formComida.get('tipo');
   }
-
   get descripcion() {
     return this.formComida.get('descripcion');
   }
-
   get img() {
     return this.formComida.get('img');
   }
-
   get grasa() {
     return this.formComida.get('grasa');
   }
-
   get proteina() {
     return this.formComida.get('proteina');
   }
-
   get carbohidrato() {
     return this.formComida.get('carbohidrato');
   }
 
-  get cantidad() {
-    return this.formComida.get('cantidad');
-  }
 
   constructor(private service: DataService, private ruta: ActivatedRoute, private formbuilder: FormBuilder,
     private router: Router) {
@@ -83,13 +70,10 @@ export class ListaAlimentosPage implements OnInit {
   }
 
   addAlimento() {
-    this.alimentos.push(this.formComida.getRawValue()['comida']);
-    const alimento = {alimento: this.comida};
-
-    this.service.updateAlimento(alimento, this.user._id).subscribe({
+    this.service.addAlimento(this.formComida.getRawValue()).subscribe({
       next: value => {
-        console.log(value)
         alert(value.status);
+        this.loadAlimentos();
       },
       error: err => {
         console.log(err);
@@ -97,7 +81,7 @@ export class ListaAlimentosPage implements OnInit {
       complete: () => {
         console.log('Done');
       }
-    });
+    })
   }
 
 
@@ -119,6 +103,10 @@ export class ListaAlimentosPage implements OnInit {
     this.router.navigate(["formulario-alimentos/" + id]);
   }
 
+  buscar(event: any){
+    console.log(event)
+    this.filtroAlimento = event.detail.value;
+  }
 
   cancel() {
     this.modal.dismiss(null, 'cancel');

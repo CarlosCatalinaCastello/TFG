@@ -11,15 +11,69 @@
   <ion-card>
     <ion-list>
       <ion-list-header>
-        <ion-searchbar placeholder="Busca por nombre de alimento..."></ion-searchbar>
+        <ion-searchbar placeholder="Busca por nombre de alimento..." animated (ionInput)="buscar($event)"></ion-searchbar>
+        <ion-button color="secondary" fill="outline" id="open-modal">AÑADIR</ion-button>
       </ion-list-header>
-      <ion-item *ngFor="let ali of alimentos">
+      <ion-item *ngFor="let ali of alimentos ">
         <ion-avatar>
           <ion-img [src]="ali.img"></ion-img>
         </ion-avatar>
-        <ion-label>{{ali.nombre}}</ion-label>
-        <ion-button (click)="goFormAlimento(ali._id)">+</ion-button>
+        <ion-label><b>{{ali.nombre}}</b></ion-label>
+        <ion-button color="secondary" fill="outline" (click)="goFormAlimento(ali._id)">AÑADIR</ion-button>
       </ion-item>
     </ion-list>
   </ion-card>
+
+  <ion-modal trigger="open-modal">
+    <ng-template>
+      <ion-content>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button (click)="addAlimento()">Aceptar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+
+        <form [formGroup]="formComida">
+          <ion-toolbar>
+            <ion-title class="margin-title">
+              AÑADIR ALIMENTO A LA LISTA
+            </ion-title>
+            <ion-row>
+              <ion-col>
+                <ion-item class="form-floating mb-3">
+                  <ion-input label="Nombre alimento" labelPlacement="floating" type="text"
+                             formControlName="nombre"
+                             id="nombre" class="form-control">
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item class="form-floating mb-3">
+                  <ion-input label="Tipo alimento" labelPlacement="floating" type="text"
+                             formControlName="tipo"
+                             id="tipo" class="form-control">
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item class="form-floating mb-3">
+                  <ion-input label="Descripcion alimento" labelPlacement="floating" type="text"
+                             formControlName="descripcion"
+                             id="descripcion" class="form-control">
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-toolbar>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

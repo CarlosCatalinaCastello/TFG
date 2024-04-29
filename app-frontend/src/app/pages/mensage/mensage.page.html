@@ -1,7 +1,5 @@
-
 <ion-content *ngIf="!loginUp">
   <mat-horizontal-stepper>
-
     <form [formGroup]="formUser" >
       <mat-step label="Address">
         <ion-avatar>
@@ -23,7 +21,9 @@
           </ion-content>
         </ion-card>
         <button mat-button matStepperNext>Siguiente</button>
-        <button routerLink="/home"><b>Cerrar</b></button>
+        <ion-button class="close-icon" color="danger" fill="outline" routerLink="/home">Cancelar</ion-button>
+
+
       </mat-step>
 
       <mat-step label="Objetivo">
@@ -45,7 +45,8 @@
         <div>
           <button mat-button matStepperPrevious>Atras</button>
           <button mat-button matStepperNext>Siguiente</button>
-          <button routerLink="/home"><b>Cerrar</b></button>
+          <ion-button class="close" color="danger" fill="outline" routerLink="/home">Cancelar</ion-button>
+
 
         </div>
 
@@ -56,6 +57,8 @@
         </ion-avatar>
         <ion-item class="position-item">
           <ion-label>¿Qué actividad física tienes?</ion-label>
+        </ion-item>
+        <ion-item class="ion-text-center">
           <ion-select formControlName="actividad" id="actividad" class="form-control"
                       label="actividad">
             <ion-select-option value="baja">Baja</ion-select-option>
@@ -67,7 +70,8 @@
         <div>
           <button mat-button matStepperPrevious>Atras</button>
           <button mat-button matStepperNext>Siguiente</button>
-          <button routerLink="/home"><b>Cerrar</b></button>
+          <ion-button class="close" color="danger" fill="outline" routerLink="/home">Cancelar</ion-button>
+
         </div>
 
       </mat-step>
@@ -94,7 +98,8 @@
 
         <button mat-button matStepperPrevious>Atras</button>
         <button mat-button matStepperNext>Siguiente</button>
-        <button routerLink="/home"><b>Cerrar</b></button>
+        <ion-button class="close" color="danger" fill="outline" routerLink="/home">Cancelar</ion-button>
+
 
       </mat-step>
 
@@ -120,7 +125,7 @@
         </ion-row>
 
         <button mat-button matStepperPrevious>Atras</button>
-        <ion-button (click)="onSubmit()" routerLink="/home">Aceptar</ion-button>
+        <ion-button class="close-icon" color="success" fill="outline" (click)="onSubmit()" routerLink="/home">Aceptar</ion-button>
       </mat-step>
     </form>
   </mat-horizontal-stepper>
