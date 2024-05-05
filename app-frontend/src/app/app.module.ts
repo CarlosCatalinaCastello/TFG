@@ -15,12 +15,13 @@ import {
   WorkWeekService, MonthService, MonthAgendaService, DragAndDropService, ResizeService
 } from '@syncfusion/ej2-angular-schedule';
 import {MatExpansionModule} from "@angular/material/expansion";
+import {NgApexchartsModule} from "ng-apexcharts";
 
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, MatStepperModule,  MatExpansionModule,
-    ComponentsModule, ScheduleModule, RecurrenceEditorModule, ScheduleModule],
+    ComponentsModule, ScheduleModule, RecurrenceEditorModule, ScheduleModule, NgApexchartsModule],
   providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, provideAnimationsAsync(),
     DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService,DragAndDropService, ResizeService],
   bootstrap: [AppComponent],

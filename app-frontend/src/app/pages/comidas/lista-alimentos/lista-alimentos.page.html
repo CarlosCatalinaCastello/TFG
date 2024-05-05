@@ -11,8 +11,8 @@
   <ion-card>
     <ion-list>
       <ion-list-header>
-        <ion-searchbar placeholder="Busca por nombre de alimento..." animated (ionInput)="buscar($event)"></ion-searchbar>
-        <ion-button color="secondary" fill="outline" id="open-modal">AÑADIR</ion-button>
+        <ion-searchbar placeholder="Busca por nombre..." (ionInput)="buscar($event)"></ion-searchbar>
+        <ion-button class="btn-add" color="success" fill="outline" id="open-modal">+</ion-button>
       </ion-list-header>
       <ion-item *ngFor="let ali of alimentos ">
         <ion-avatar>
@@ -36,7 +36,7 @@
           </ion-buttons>
         </ion-toolbar>
 
-        <form [formGroup]="formComida">
+        <form [formGroup]="formComida" (ngSubmit)="addAlimento()">
           <ion-toolbar>
             <ion-title class="margin-title">
               AÑADIR ALIMENTO A LA LISTA
@@ -67,6 +67,46 @@
                   <ion-input label="Descripcion alimento" labelPlacement="floating" type="text"
                              formControlName="descripcion"
                              id="descripcion" class="form-control">
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item class="form-floating mb-3">
+                  <ion-input label="Imagen alimento" labelPlacement="floating" type="text"
+                             formControlName="img"
+                             id="img" class="form-control">
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item class="form-floating mb-3">
+                  <ion-input label="Proteina" labelPlacement="floating" type="text"
+                             formControlName="proteina"
+                             id="proteina" class="form-control">
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item class="form-floating mb-3">
+                  <ion-input label="Carbohidratos" labelPlacement="floating" type="text"
+                             formControlName="carbohidrato"
+                             id="carbohidrato" class="form-control">
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item class="form-floating mb-3">
+                  <ion-input label="Grasas" labelPlacement="floating" type="text"
+                             formControlName="grasa"
+                             id="grasa" class="form-control">
                   </ion-input>
                 </ion-item>
               </ion-col>

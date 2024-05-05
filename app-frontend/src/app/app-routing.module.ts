@@ -67,8 +67,7 @@ const routes: Routes = [
   },
   {
     path: 'lista-alimentos/:id',
-    loadChildren: () => import('./pages/comidas/lista-alimentos/lista-alimentos.module').then( m => m.ListaAlimentosPageModule),
-    canMatch: [userGuard]
+    loadChildren: () => import('./pages/comidas/lista-alimentos/lista-alimentos.module').then( m => m.ListaAlimentosPageModule)
   },
   {
     path: 'info-nutricion',

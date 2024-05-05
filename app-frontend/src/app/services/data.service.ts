@@ -19,7 +19,6 @@ export class DataService {
 
   token: string = '';
   usuario!: Usuario;
-  alimento!: Alimentos;
   constructor(private http: HttpClient, private router: Router) { }
 
   registro(usuario: Usuario): Promise<any>{

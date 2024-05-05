@@ -19,6 +19,7 @@ export class ListaAlimentosPage implements OnInit {
   comida: Comida[] = [];
   user!: Usuario;
   bloqueComida!: BloqueComida;
+
   alimentos: Alimentos[] = [];
 
 
@@ -34,26 +35,32 @@ export class ListaAlimentosPage implements OnInit {
   });
 
   //Getters
-  get nombre() {
+  get nombre(): any {
     return this.formComida.get('nombre');
   }
-  get tipo() {
+
+  get tipo(): any {
     return this.formComida.get('tipo');
   }
-  get descripcion() {
-    return this.formComida.get('descripcion');
-  }
-  get img() {
+
+  get img(): any {
     return this.formComida.get('img');
   }
-  get grasa() {
-    return this.formComida.get('grasa');
-  }
-  get proteina() {
+
+  get proteina(): any {
     return this.formComida.get('proteina');
   }
-  get carbohidrato() {
+
+  get grasa(): any {
+    return this.formComida.get('grasa');
+  }
+
+  get carbohidrato(): any {
     return this.formComida.get('carbohidrato');
+  }
+
+  get descripcion(): any {
+    return this.formComida.get('descripcion');
   }
 
 
@@ -72,8 +79,8 @@ export class ListaAlimentosPage implements OnInit {
   addAlimento() {
     this.service.addAlimento(this.formComida.getRawValue()).subscribe({
       next: value => {
-        alert(value.status);
         this.loadAlimentos();
+        alert(value.status);
       },
       error: err => {
         console.log(err);
@@ -81,7 +88,7 @@ export class ListaAlimentosPage implements OnInit {
       complete: () => {
         console.log('Done');
       }
-    })
+    });
   }
 
 
