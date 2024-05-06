@@ -16,12 +16,12 @@ import {
 } from '@syncfusion/ej2-angular-schedule';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {NgApexchartsModule} from "ng-apexcharts";
-
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, MatStepperModule,  MatExpansionModule,
-    ComponentsModule, ScheduleModule, RecurrenceEditorModule, ScheduleModule, NgApexchartsModule],
+    ComponentsModule, ScheduleModule, RecurrenceEditorModule, ScheduleModule, NgApexchartsModule, FormsModule],
   providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, provideAnimationsAsync(),
     DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService,DragAndDropService, ResizeService],
   bootstrap: [AppComponent],
