@@ -3,7 +3,7 @@ import {DataService} from "../../../services/data.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Alimentos} from "../../../common/alimentos";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {BloqueComida, Comida, Usuario} from "../../../common/interfaces";
+import {BloqueComida, bloqueEnviar, Comida, Usuario} from "../../../common/interfaces";
 import {IonModal} from "@ionic/angular";
 
 @Component({
@@ -16,22 +16,31 @@ export class ListaAlimentosPage implements OnInit {
   filtroAlimento= '';
 
   id!: string;
-  comida: Comida[] = [];
+
+  comidas: Comida[] = [];
   user!: Usuario;
   bloqueComida!: BloqueComida;
+  bloqueComidas: BloqueComida[] = [];
 
   alimentos: Alimentos[] = [];
-
+  alimento!: Alimentos;
+  isModalOpen: boolean = false;
 
   formComida: FormGroup = this.formbuilder.group({
-    _id: [''],
-    nombre: [''],
-    tipo: [''],
-    descripcion: [''],
-    img: [''],
-    proteina: [''],
-    carbohidrato: [''],
-    grasa: ['']
+    bloqueComida: this.formbuilder.group({
+      nombreBloque: [''],
+      comida: this.formbuilder.group({
+        _id: [''],
+        nombre: [''],
+        tipo: [''],
+        descripcion: [''],
+        img: [''],
+        grasa: [''],
+        proteina: [''],
+        carbohidrato: [''],
+        cantidad: ['']
+      })
+    })
   });
 
   //Getters
@@ -62,7 +71,9 @@ export class ListaAlimentosPage implements OnInit {
   get descripcion(): any {
     return this.formComida.get('descripcion');
   }
-
+  get cantidad() {
+    return this.formComida.get('cantidad');
+  }
 
   constructor(private service: DataService, private ruta: ActivatedRoute, private formbuilder: FormBuilder,
     private router: Router) {
@@ -76,10 +87,17 @@ export class ListaAlimentosPage implements OnInit {
     this.loadAlimentos();
   }
 
+
   addAlimento() {
-    this.service.addAlimento(this.formComida.getRawValue()).subscribe({
+    console.log(this.formComida.getRawValue())
+    this.bloqueComidas.push(this.formComida.getRawValue()['bloqueComida']);
+    const user = {bloqueComida: this.bloqueComidas};
+    console.log(this.formComida.getRawValue())
+
+    // comida actualizado con todo lo que este en la api
+
+    this.service.updateAlimentos(user, this.user._id).subscribe({
       next: value => {
-        this.loadAlimentos();
         alert(value.status);
       },
       error: err => {
@@ -88,7 +106,15 @@ export class ListaAlimentosPage implements OnInit {
       complete: () => {
         console.log('Done');
       }
-    });
+    })
+  }
+
+
+  loadAlimento(alimento: Alimentos) {
+    this.formComida.get('bloqueComida.nombreBloque')?.setValue(this.bloqueComida.nombreBloque);
+    const comidaFormGroup = this.formComida.get('bloqueComida.comida') as FormGroup;
+    comidaFormGroup.patchValue(alimento);
+    this.isModalOpen = true;
   }
 
 
@@ -96,6 +122,19 @@ export class ListaAlimentosPage implements OnInit {
     this.service.getAlimentos().subscribe({
       next: value => {
         this.alimentos = value;
+      },
+      error: err => {
+        console.log(err)
+      },
+      complete: () => {
+        console.log('Get Alimentos')
+      }
+    })
+
+    this.service.getOneBloque(this.id).subscribe({
+      next: value => {
+        this.bloqueComida = value;
+        console.log(this.bloqueComida.nombreBloque)
       },
       error: err => {
         console.log(err)
@@ -117,5 +156,6 @@ export class ListaAlimentosPage implements OnInit {
 
   cancel() {
     this.modal.dismiss(null, 'cancel');
+    this.isModalOpen = false;
   }
 }

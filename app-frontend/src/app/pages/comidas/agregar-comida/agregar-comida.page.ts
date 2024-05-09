@@ -45,7 +45,7 @@ comidas: Comida[] = [];
   }
 
   addBloqueComida() {
-
+    //Recoge la información del bloque de comida y la añade a la información que tiene la API
     this.bloqueComida.push(this.formComida.getRawValue()['bloqueComida']);
     const user = {bloqueComida: this.bloqueComida};
 
@@ -57,6 +57,7 @@ comidas: Comida[] = [];
         console.log(this.nombreBloque)
         this.loadBloqueComida();
         alert(value.status);
+        this.modal.dismiss(null, 'cancel')
       },
       error: err => {
         console.log(err);
@@ -67,12 +68,14 @@ comidas: Comida[] = [];
     })
   }
 
-  deleteBloqueComida(bloque: BloqueComida){
-    if (confirm('Desea borrar la comida' + bloque.nombreBloque + '?')) {
-      this.service.deleteComida(bloque._id).subscribe({
+  deleteBloqueComida(id: string) {
+    const confirmacion = window.confirm('¿Estás seguro de que quieres eliminar este bloque de comida?');
+    if (confirmacion) {
+      this.service.deleteBloqueComida(id).subscribe({
         next: value => {
-          this.loadBloqueComida();
+          console.log(value)
           alert(value.status);
+          this.loadBloqueComida();
         },
         error: err => {
           console.log(err);
@@ -83,6 +86,8 @@ comidas: Comida[] = [];
       });
     }
   }
+
+
 
   goListComida(id?: string) {
     this.router.navigate(["lista-alimentos/" + id]);

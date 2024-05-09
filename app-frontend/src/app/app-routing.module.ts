@@ -67,7 +67,8 @@ const routes: Routes = [
   },
   {
     path: 'lista-alimentos/:id',
-    loadChildren: () => import('./pages/comidas/lista-alimentos/lista-alimentos.module').then( m => m.ListaAlimentosPageModule)
+    loadChildren: () => import('./pages/comidas/lista-alimentos/lista-alimentos.module').then( m => m.ListaAlimentosPageModule),
+    canMatch: [userGuard]
   },
   {
     path: 'info-nutricion',
@@ -80,9 +81,8 @@ const routes: Routes = [
     canMatch: [userGuard]
   },
   {
-    path: 'formulario-alimentos/:id',
-    loadChildren: () => import('./pages/comidas/formulario-alimentos/formulario-alimentos.module').then( m => m.FormularioAlimentosPageModule),
-    canMatch: [userGuard]
+    path: 'formulario-alimentos',
+    loadChildren: () => import('./pages/comidas/formulario-alimentos/formulario-alimentos.module').then( m => m.FormularioAlimentosPageModule)
   }
 ];
 

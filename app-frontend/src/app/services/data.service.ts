@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {BloqueComida, Comida, Usuario} from "../common/interfaces";
+import {BloqueComida, bloqueEnviar, Comida, Usuario} from "../common/interfaces";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {MenuLateral} from "../common/menu-lateral";
@@ -19,6 +19,7 @@ export class DataService {
 
   token: string = '';
   usuario!: Usuario;
+  alimento!: Alimentos;
   constructor(private http: HttpClient, private router: Router) { }
 
   registro(usuario: Usuario): Promise<any>{
@@ -124,12 +125,8 @@ export class DataService {
     console.log(user)
     return this.http.patch<ResponseApiFull>(this.urlUser+id, user);
   }
-  updateAlimentos(user: { alimento: Comida[] }, id: string): Observable<ResponseApiFull>{
-    console.log(user)
-    return this.http.patch<ResponseApiFull>(this.urlUser+id, user);
-  }
-  updateAlimento(user: { alimento: Comida[] }, id: string): Observable<ResponseApiFull>{
-    console.log(user)
+
+  updateAlimentos(user: { bloqueComida: BloqueComida[] }, id: string): Observable<ResponseApiFull>{
     return this.http.patch<ResponseApiFull>(this.urlUser+id, user);
   }
 
@@ -143,6 +140,16 @@ export class DataService {
     return this.http.delete<ResponseApi>(this.urlUser+id);
   }
 
+  deleteBloqueComida(id: string): Observable<ResponseApi> {
+    return this.http.delete<ResponseApi>(this.urlOneBloqueComida + id);
+  }
+
+  deleteAlimento(bloqueNombre: string, comidaId: string): Observable<ResponseApi> {
+    const url = this.urlOneBloqueComida + bloqueNombre + '/comida/' + comidaId;
+    return this.http.delete<ResponseApi>(url);
+  }
+
+
 
 }
 interface ResponseApiFull{
@@ -152,3 +159,4 @@ interface ResponseApiFull{
 interface ResponseApi{
   status: string;
 }
+

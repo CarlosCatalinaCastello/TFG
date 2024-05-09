@@ -19,6 +19,7 @@ export interface BloqueComida{
   comida: Comida[]
 }
 export interface Comida{
+  _id: string
   nombre: string
   tipo: string
   descripcion: string
@@ -27,4 +28,8 @@ export interface Comida{
   proteina: string
   carbohidrato: string
   cantidad: string
+}
+
+export interface bloqueEnviar{
+  bloque?: BloqueComida
 }

@@ -10,7 +10,8 @@
   </ion-toolbar>
   <ion-row>
     <ion-col>
-      <ion-button expand="block" size="large" id="open-modal" color="secondary" class="button-addBlock">AÑADIR BLOQUE DE COMIDA</ion-button>
+      <ion-button expand="block" shape="round" size="large" id="open-modal" fill="outline"
+                  color="secondary" class="button-addBlock">AÑADIR BLOQUE DE COMIDA</ion-button>
     </ion-col>
   </ion-row>
 </ion-header>
@@ -19,21 +20,26 @@
 
       <ion-card *ngFor="let bloque of bloqueComida">
 
-        <ion-row>
-          <ion-col>
-            <ion-icon name="add-circle-outline" (click)="goListComida(comida._id)"></ion-icon>
-            <ion-icon class="margin-left" name="color-wand-outline" (click)="goDetallesComida(bloque._id)"></ion-icon>
+        <ion-row class="ion-text-center">
+          <ion-col class="move-icon-model">
+            <ion-icon class="icon-model" name="add-circle-outline" (click)="goListComida(bloque._id)"></ion-icon>
+          </ion-col>
+          <ion-col class="move-icon-model move-right">
+            <ion-icon class="icon-model" name="color-wand-outline" (click)="goDetallesComida(bloque._id)"></ion-icon>
           </ion-col>
           <ion-col>
-            <ion-card-title class="ion-text-center ion-margin-top ion-margin-bottom">
+            <ion-card-title>
               {{bloque.nombreBloque}}
             </ion-card-title>
+          </ion-col>
+          <ion-col class="move-icon-delete">
+            <ion-icon class="icon-delete" name="trash-outline" (click)="deleteBloqueComida(bloque._id)"></ion-icon>
           </ion-col>
         </ion-row>
 
 
         <ion-card-content *ngFor="let comida of bloque.comida">
-          <ion-row>
+          <ion-row class="position-content">
             <ion-col>
               <ion-label><b>{{comida.nombre}}</b></ion-label>
             </ion-col>

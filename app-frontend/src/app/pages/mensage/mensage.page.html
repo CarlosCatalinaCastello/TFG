@@ -20,8 +20,9 @@
             </ion-card-subtitle>
           </ion-content>
         </ion-card>
-        <button mat-button matStepperNext>Siguiente</button>
-        <ion-button class="close-icon" color="danger" fill="outline" routerLink="/home">Cancelar</ion-button>
+        <button mat-button  routerLink="/home">Cancelar</button>
+        <button class="mat-button-1" mat-button matStepperNext>Siguiente</button>
+
 
 
       </mat-step>
@@ -43,11 +44,10 @@
         </ion-item>
 
         <div>
-          <button mat-button matStepperPrevious>Atras</button>
-          <button mat-button matStepperNext>Siguiente</button>
-          <ion-button class="close" color="danger" fill="outline" routerLink="/home">Cancelar</ion-button>
+          <button mat-button routerLink="/home"><b>Cancelar</b></button>
 
-
+          <button class="mat-button" mat-button matStepperPrevious>Atras</button>
+          <button  mat-button matStepperNext>Siguiente</button>
         </div>
 
       </mat-step>
@@ -68,9 +68,10 @@
         </ion-item>
 
         <div>
-          <button mat-button matStepperPrevious>Atras</button>
+          <button mat-button  routerLink="/home">Cancelar</button>
+
+          <button class="mat-button" mat-button matStepperPrevious>Atras</button>
           <button mat-button matStepperNext>Siguiente</button>
-          <ion-button class="close" color="danger" fill="outline" routerLink="/home">Cancelar</ion-button>
 
         </div>
 
@@ -95,11 +96,10 @@
             </ion-item>
           </ion-col>
         </ion-row>
+        <button mat-button routerLink="/home">Cancelar</button>
 
-        <button mat-button matStepperPrevious>Atras</button>
+        <button class="mat-button" mat-button matStepperPrevious>Atras</button>
         <button mat-button matStepperNext>Siguiente</button>
-        <ion-button class="close" color="danger" fill="outline" routerLink="/home">Cancelar</ion-button>
-
 
       </mat-step>
 
@@ -124,8 +124,8 @@
           </ion-col>
         </ion-row>
 
-        <button mat-button matStepperPrevious>Atras</button>
-        <ion-button class="close-icon" color="success" fill="outline" (click)="onSubmit()" routerLink="/home">Aceptar</ion-button>
+        <button class="close-icon"  mat-button matStepperPrevious>Atras</button>
+        <button mat-button (click)="onSubmit()" routerLink="/home">Aceptar</button>
       </mat-step>
     </form>
   </mat-horizontal-stepper>
