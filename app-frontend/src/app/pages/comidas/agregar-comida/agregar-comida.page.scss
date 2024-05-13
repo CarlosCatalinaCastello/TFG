@@ -19,7 +19,13 @@ ion-icon.icon-model{
   padding: 5px;
   width: 30px;
   height: 30px;
-  color: #67d9b0;
+  color: #b69cdc;
+}
+ion-icon.icon-model-list{
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  color: #76d967;
 }
 .move-icon-model{
   margin-top: 15px;
@@ -44,6 +50,9 @@ ion-icon.icon-model{
 
 
 //Card
+ion-card{
+  background-color: #ffff;
+}
 ion-card-title {
   font-size: 1.5rem;
   font-weight: bold;
@@ -51,7 +60,7 @@ ion-card-title {
   display: flex;
   margin-top: 15px;
   margin-bottom: 10px;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 ion-card-content {
 margin-bottom: -35px;
@@ -73,7 +82,7 @@ ion-header{
   margin-bottom: 20px;
 }
 .position-content {
-  margin-bottom: -5px;
+  margin-bottom: 15px;
 }
 .align-items{
   margin-left: 90px;

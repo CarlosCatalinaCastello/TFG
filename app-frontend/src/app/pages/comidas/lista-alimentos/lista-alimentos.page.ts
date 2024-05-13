@@ -26,11 +26,14 @@ export class ListaAlimentosPage implements OnInit {
   alimento!: Alimentos;
   isModalOpen: boolean = false;
 
+
+
+
   formComida: FormGroup = this.formbuilder.group({
     bloqueComida: this.formbuilder.group({
+      _id:[''],
       nombreBloque: [''],
       comida: this.formbuilder.group({
-        _id: [''],
         nombre: [''],
         tipo: [''],
         descripcion: [''],
@@ -85,17 +88,18 @@ export class ListaAlimentosPage implements OnInit {
     });
 
     this.loadAlimentos();
+
   }
 
 
   addAlimento() {
-    console.log(this.formComida.getRawValue())
     this.bloqueComidas.push(this.formComida.getRawValue()['bloqueComida']);
     const user = {bloqueComida: this.bloqueComidas};
+
     console.log(this.formComida.getRawValue())
+    console.log(user)
 
     // comida actualizado con todo lo que este en la api
-
     this.service.updateAlimentos(user, this.user._id).subscribe({
       next: value => {
         alert(value.status);
@@ -112,9 +116,14 @@ export class ListaAlimentosPage implements OnInit {
 
   loadAlimento(alimento: Alimentos) {
     this.formComida.get('bloqueComida.nombreBloque')?.setValue(this.bloqueComida.nombreBloque);
+    this.formComida.get('bloqueComida._id')?.setValue(this.id);
     const comidaFormGroup = this.formComida.get('bloqueComida.comida') as FormGroup;
     comidaFormGroup.patchValue(alimento);
     this.isModalOpen = true;
+    this.user = this.service.usuario;
+
+    console.log(comidaFormGroup.getRawValue())
+    console.log(this.formComida.getRawValue())
   }
 
 

@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'mensage',
-    loadChildren: () => import('./pages/mensage/mensage.module').then( m => m.MensagePageModule),
+    loadChildren: () => import('./pages/usuario/mensage/mensage.module').then(m => m.MensagePageModule),
     canMatch: [userGuard]
   },
   {
@@ -37,7 +37,7 @@ const routes: Routes = [
   },
   {
     path: 'info-usuario',
-    loadChildren: () => import('./pages/info-usuario/info-usuario.module').then( m => m.InfoUsuarioPageModule),
+    loadChildren: () => import('./pages/usuario/info-usuario/info-usuario.module').then(m => m.InfoUsuarioPageModule),
     canMatch: [userGuard]
   },
   {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Usuario} from "../../common/interfaces";
-import {DataService} from "../../services/data.service";
+import {Usuario} from "../../../common/interfaces";
+import {DataService} from "../../../services/data.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({

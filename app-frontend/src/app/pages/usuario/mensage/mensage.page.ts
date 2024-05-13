@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {DataService} from "../../services/data.service";
+import {DataService} from "../../../services/data.service";
 import {Router} from "@angular/router";
-import {Usuario} from "../../common/interfaces";
+import {Usuario} from "../../../common/interfaces";
 
 @Component({
   selector: 'app-mensage',

@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { InfoUsuarioPageRoutingModule } from './info-usuario-routing.module';
 
 import { InfoUsuarioPage } from './info-usuario.page';
-import {ComponentsModule} from "../../components/components.module";
+import {ComponentsModule} from "../../../components/components.module";
 
 @NgModule({
     imports: [

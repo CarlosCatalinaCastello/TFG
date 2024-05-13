@@ -73,7 +73,6 @@ comidas: Comida[] = [];
     if (confirmacion) {
       this.service.deleteBloqueComida(id).subscribe({
         next: value => {
-          console.log(value)
           alert(value.status);
           this.loadBloqueComida();
         },
