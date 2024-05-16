@@ -3,7 +3,7 @@ import {DataService} from "../../../services/data.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Alimentos} from "../../../common/alimentos";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {BloqueComida, bloqueEnviar, Comida, Usuario} from "../../../common/interfaces";
+import {BloqueComida, Comida, Usuario} from "../../../common/interfaces";
 import {IonModal} from "@ionic/angular";
 
 @Component({
@@ -19,14 +19,13 @@ export class ListaAlimentosPage implements OnInit {
 
   comidas: Comida[] = [];
   user!: Usuario;
+
   bloqueComida!: BloqueComida;
   bloqueComidas: BloqueComida[] = [];
 
   alimentos: Alimentos[] = [];
   alimento!: Alimentos;
   isModalOpen: boolean = false;
-
-
 
 
   formComida: FormGroup = this.formbuilder.group({
@@ -93,16 +92,19 @@ export class ListaAlimentosPage implements OnInit {
 
 
   addAlimento() {
-    this.bloqueComidas.push(this.formComida.getRawValue()['bloqueComida']);
-    const user = {bloqueComida: this.bloqueComidas};
+    this.bloqueComidas.forEach((bloqueComida: BloqueComida) => {
+      if (bloqueComida.nombreBloque === this.bloqueComida.nombreBloque){
+        bloqueComida.comida.push(this.formComida.getRawValue()['bloqueComida']['comida']);
+      }
+    })
 
-    console.log(this.formComida.getRawValue())
-    console.log(user)
+    const user = {bloqueComida: this.bloqueComidas};
 
     // comida actualizado con todo lo que este en la api
     this.service.updateAlimentos(user, this.user._id).subscribe({
       next: value => {
         alert(value.status);
+        this.modal.dismiss(null, 'aceptar');
       },
       error: err => {
         console.log(err);
@@ -117,13 +119,12 @@ export class ListaAlimentosPage implements OnInit {
   loadAlimento(alimento: Alimentos) {
     this.formComida.get('bloqueComida.nombreBloque')?.setValue(this.bloqueComida.nombreBloque);
     this.formComida.get('bloqueComida._id')?.setValue(this.id);
-    const comidaFormGroup = this.formComida.get('bloqueComida.comida') as FormGroup;
-    comidaFormGroup.patchValue(alimento);
+    this.formComida.get('bloqueComida.comida')?.patchValue(alimento);
+
     this.isModalOpen = true;
     this.user = this.service.usuario;
+    this.bloqueComidas = this.user.bloqueComida;
 
-    console.log(comidaFormGroup.getRawValue())
-    console.log(this.formComida.getRawValue())
   }
 
 
@@ -131,6 +132,7 @@ export class ListaAlimentosPage implements OnInit {
     this.service.getAlimentos().subscribe({
       next: value => {
         this.alimentos = value;
+        console.log(this.alimentos)
       },
       error: err => {
         console.log(err)
@@ -149,7 +151,7 @@ export class ListaAlimentosPage implements OnInit {
         console.log(err)
       },
       complete: () => {
-        console.log('Get Alimentos')
+        console.log('Get Bloques')
       }
     })
   }
@@ -159,7 +161,6 @@ export class ListaAlimentosPage implements OnInit {
   }
 
   buscar(event: any){
-    console.log(event)
     this.filtroAlimento = event.detail.value;
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {EventSettingsModel} from "@syncfusion/ej2-angular-schedule";
+import {EventSettingsModel, View} from "@syncfusion/ej2-angular-schedule";
 
 @Component({
   selector: 'app-calendario',
@@ -8,6 +8,14 @@ import {EventSettingsModel} from "@syncfusion/ej2-angular-schedule";
 })
 export class CalendarioPage implements OnInit {
 
+  public setView: View = 'Month';
+  public setDate: Date = new Date(2024,5,27);
+  public event: EventSettingsModel = {
+    dataSource:[{
+      StartTime: new Date(2024, 0,16,4,0),
+      EndTime: new Date(2024, 0,16,6,0)
+    }]
+  }
 
   constructor() { }
 

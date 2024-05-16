@@ -1,11 +1,22 @@
-
 ion-toolbar{
   margin-top: 20px;
 }
 
 //boton añadir bloque
-.button-addBlock{
-  margin: 20px 35px;
+.button-addBlock {
+  margin: 20px 0 20px 30px;
+  width: 300px;
+}
+
+.btn-reload {
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+ion-icon.btn-reload{
+  padding: 15px;
+  width: 20px;
+  height: 20px;
+  color: #09296b;
 }
 
 ion-img{
@@ -50,6 +61,9 @@ ion-icon.icon-model-list{
 
 
 //Card
+ion-label{
+  font-size: 12px !important;
+}
 ion-card{
   background-color: #ffff;
 }
@@ -85,5 +99,6 @@ ion-header{
   margin-bottom: 15px;
 }
 .align-items{
-  margin-left: 90px;
+  margin-left: 50px;
 }
+

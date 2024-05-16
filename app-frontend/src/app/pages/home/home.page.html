@@ -1,10 +1,10 @@
-<ion-header [translucent]="true" class="ion-no-border">
+<ion-header [translucent]="true" class="mb-2">
   <ion-toolbar class="col-header">
     <ion-avatar>
       <ion-img class="img" src="/assets/icon/fitguru1.png" alt="img-logo"></ion-img>
     </ion-avatar>
     <ion-avatar routerLink="/info-nutricion" slot="start" class="width-avatar">
-      <ion-icon color="primary" name="information-circle-outline"></ion-icon>
+      <ion-icon class="icon-info" color="primary" name="information-circle-outline"></ion-icon>
     </ion-avatar>
     <ion-buttons slot="end">
       <ion-menu-button menu="menuLateral" color="primary"></ion-menu-button>
@@ -14,7 +14,7 @@
 
 <ion-content class="ion-padding">
   <ion-row>
-    <ion-col class="text-center color-mensage">
+    <ion-col class="text-center">
       <ion-title>¿Que es Fitguru?</ion-title>
       <ion-label>Somos más qie una app con las que puedas llevar un control de
         tu alimentación, somos una herramienta con distintas funcionalidades, no solo para ayudar
@@ -52,29 +52,34 @@
         </ion-item>
       </ion-list>
     </ion-col>
-    <ion-col>
-      <ion-img src="/assets/img/dieta.jpg"></ion-img>
-      <ion-img src="/assets/img/dieta4.jpg"></ion-img>
+    <ion-col class="primera-img">
+      <ion-img class="mb-5 primera-img" src="/assets/img/triangulo.png"></ion-img>
+      <ion-img class="mt-3" src="/assets/img/dieta5.png"></ion-img>
     </ion-col>
 
   </ion-row>
   <ion-row>
     <ion-col class="img-width">
-      <ion-img src="/assets/img/dieta3.jpg"></ion-img>
+      <ion-img src="/assets/img/imagenPrincipal.PNG"></ion-img>
     </ion-col>
   </ion-row>
 </ion-content>
 
-<ion-tabs>
-  <ion-tab-bar slot="bottom" color="primary">
-    <ion-tab-button routerLink="/agregar-comida">
-      <ion-label>Agregar Comida</ion-label>
-    </ion-tab-button>
-    <ion-tab-button routerLink="/calculadora-tabs">
-      <ion-label>Calculadoras</ion-label>
-    </ion-tab-button>
-    <ion-tab-button routerLink="/calendario">
-      <ion-label>Calendario</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom" color="primary">
+        <ion-tab-button routerLink="/agregar-comida">
+          <ion-label><b>AGREGAR COMIDA</b></ion-label>
+        </ion-tab-button>
+        <ion-tab-button routerLink="/calculadora-tabs">
+          <ion-label><b>CALCULADORA</b></ion-label>
+        </ion-tab-button>
+        <ion-tab-button routerLink="/calendario">
+          <ion-label><b>CALENDARIO</b></ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+</ion-footer>
+

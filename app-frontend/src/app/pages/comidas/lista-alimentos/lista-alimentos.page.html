@@ -14,7 +14,7 @@
         <ion-searchbar placeholder="Busca por nombre..." (ionInput)="buscar($event)"></ion-searchbar>
         <ion-button class="btn-add" color="success" fill="outline" routerLink="/formulario-alimentos">+</ion-button>
       </ion-list-header>
-      <ion-item *ngFor="let ali of alimentos">
+      <ion-item *ngFor="let ali of alimentos | filtro: filtroAlimento" class="bg-item">
         <ion-avatar>
           <ion-img [src]="ali.img"></ion-img>
         </ion-avatar>
@@ -31,6 +31,9 @@
           <ion-buttons slot="start">
             <ion-button (click)="cancel()">Cancel</ion-button>
           </ion-buttons>
+          <ion-title class="ion-text-center">
+            AÑADIR ALIMENTO A LA LISTA
+          </ion-title>
           <ion-buttons slot="end">
             <ion-button (click)="addAlimento()">Aceptar</ion-button>
           </ion-buttons>
@@ -38,9 +41,12 @@
 
         <form [formGroup]="formComida" (ngSubmit)="addAlimento()" >
           <ion-toolbar formGroupName="bloqueComida">
+            <ion-label class="ion-text-center mt-5">
+              <b>NOMBRE BLOQUE DE COMIDA</b>
+            </ion-label>
             <ion-row>
               <ion-col>
-                <ion-item class="form-floating mb-3">
+                <ion-item class="form-floating mb-4">
                   <ion-input label="Nombre bloque" labelPlacement="floating" type="text"
                              formControlName="nombreBloque"
                              id="nombreBloque" class="form-control">
@@ -49,9 +55,7 @@
               </ion-col>
             </ion-row>
             <div formGroupName="comida">
-              <ion-title class="margin-title">
-                AÑADIR ALIMENTO A LA LISTA
-              </ion-title>
+              <ion-label><b>INFORMACIÓN ALIMENTO</b></ion-label>
               <ion-row>
                 <ion-col>
                   <ion-item class="form-floating mb-3">
@@ -64,11 +68,20 @@
               </ion-row>
               <ion-row>
                 <ion-col>
-                  <ion-item class="form-floating mb-3">
-                    <ion-input label="Tipo alimento" labelPlacement="floating" type="text"
-                               formControlName="tipo"
-                               id="tipo" class="form-control">
-                    </ion-input>
+                  <ion-item class="mb-3">
+                    <ion-select label="Tipo alimento" labelPlacement="floating" formControlName="tipo"
+                                id="tipo" class="form-control">
+                      <ion-select-option value="Frutas">Frutas</ion-select-option>
+                      <ion-select-option value="Verduras">Verduras</ion-select-option>
+                      <ion-select-option value="Cereales y granos">Cereales y granos</ion-select-option>
+                      <ion-select-option value="Productos lácteos">Productos lácteos</ion-select-option>
+                      <ion-select-option value="Proteínas de origen animal">Proteínas de origen animal</ion-select-option>
+                      <ion-select-option value="Legumbres y frutos secos">Legumbres y frutos secos</ion-select-option>
+                      <ion-select-option value="Aceites y grasas">Aceites y grasas</ion-select-option>
+                      <ion-select-option value="Azúcares y edulcorantes">Azúcares y edulcorantes</ion-select-option>
+                      <ion-select-option value="Bebidas">Bebidas</ion-select-option>
+                      <ion-select-option value="Alimentos procesados">Alimentos procesados</ion-select-option>
+                    </ion-select>
                   </ion-item>
                 </ion-col>
               </ion-row>
@@ -84,7 +97,7 @@
               </ion-row>
               <ion-row>
                 <ion-col>
-                  <ion-item class="form-floating mb-3">
+                  <ion-item class="form-floating mb-4">
                     <ion-input label="Imagen alimento" labelPlacement="floating" type="text"
                                formControlName="img"
                                id="img" class="form-control">
@@ -92,30 +105,27 @@
                   </ion-item>
                 </ion-col>
               </ion-row>
+              <ion-label class="ion-text-center"><b>MACRONUTRIENTES</b></ion-label>
               <ion-row>
                 <ion-col>
                   <ion-item class="form-floating mb-3">
-                    <ion-input label="Proteina" labelPlacement="floating" type="text"
+                    <ion-input label="Proteina (gramos)" labelPlacement="floating" type="text"
                                formControlName="proteina"
                                id="proteina" class="form-control">
                     </ion-input>
                   </ion-item>
                 </ion-col>
-              </ion-row>
-              <ion-row>
                 <ion-col>
                   <ion-item class="form-floating mb-3">
-                    <ion-input label="Carbohidratos" labelPlacement="floating" type="text"
+                    <ion-input label="Carbohidratos (gramos)" labelPlacement="floating" type="text"
                                formControlName="carbohidrato"
                                id="carbohidrato" class="form-control">
                     </ion-input>
                   </ion-item>
                 </ion-col>
-              </ion-row>
-              <ion-row>
                 <ion-col>
                   <ion-item class="form-floating mb-3">
-                    <ion-input label="Grasas" labelPlacement="floating" type="text"
+                    <ion-input label="Grasas (gramos)" labelPlacement="floating" type="text"
                                formControlName="grasa"
                                id="grasa" class="form-control">
                     </ion-input>
@@ -125,7 +135,7 @@
               <ion-row>
                 <ion-col>
                   <ion-item class="form-floating mb-3">
-                    <ion-input label="Cantidad" labelPlacement="floating" type="text"
+                    <ion-input label="Cantidad (gramos)" labelPlacement="floating" type="text"
                                formControlName="cantidad"
                                id="cantidad" class="form-control">
                     </ion-input>

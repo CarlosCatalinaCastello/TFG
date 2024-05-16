@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {IonModal} from "@ionic/angular";
 
+
 @Component({
   selector: 'app-agregar-comida',
   templateUrl: './agregar-comida.page.html',
@@ -34,18 +35,32 @@ comidas: Comida[] = [];
     this.loadBloqueComida();
   }
 
+  reload(){
+    window.location.reload();
+  }
+
 
   private loadBloqueComida() {
-    this.comida = this.service.usuario;
-    this.bloqueComida = this.comida.bloqueComida;
-    this.comidas = this.comida.comida;
+    //this.comida = this.service.usuario;
+    this.service.usuario2.subscribe({
+      next: value => {
+        this.comida = value;
+        this.bloqueComida = value.bloqueComida;
+      },
+      error: err => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('Done');
+      }
+    })
+
+    //this.bloqueComida = this.comida.bloqueComida;
     console.log(this.comida)
     console.log(this.bloqueComida)
-    console.log(this.comidas)
   }
 
   addBloqueComida() {
-    //Recoge la información del bloque de comida y la añade a la información que tiene la API
     this.bloqueComida.push(this.formComida.getRawValue()['bloqueComida']);
     const user = {bloqueComida: this.bloqueComida};
 
@@ -53,8 +68,6 @@ comidas: Comida[] = [];
     console.log(user)
     this.service.updateBloqueComida(user, this.comida._id).subscribe({
       next: value => {
-        console.log(value)
-        console.log(this.nombreBloque)
         this.loadBloqueComida();
         alert(value.status);
         this.modal.dismiss(null, 'cancel')
@@ -73,8 +86,8 @@ comidas: Comida[] = [];
     if (confirmacion) {
       this.service.deleteBloqueComida(id).subscribe({
         next: value => {
-          alert(value.status);
           this.loadBloqueComida();
+          alert(value.status);
         },
         error: err => {
           console.log(err);

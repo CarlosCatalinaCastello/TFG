@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {BloqueComida, bloqueEnviar, Comida, Usuario} from "../common/interfaces";
+import {BloqueComida, Comida, Usuario} from "../common/interfaces";
 import {Router} from "@angular/router";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {MenuLateral} from "../common/menu-lateral";
 import {Alimentos} from "../common/alimentos";
 
@@ -19,6 +19,25 @@ export class DataService {
 
   token: string = '';
   usuario!: Usuario;
+  // TODO rellenar campos
+
+  usuarioVacio: Usuario = {
+    _id: '',
+    username: '',
+    avatar: '',
+    email: '',
+    password: '',
+    objetivo: '',
+    actividad: '',
+    sexo: '',
+    edad: '',
+    peso: '',
+    altura: '',
+    bloqueComida: [{ nombreBloque: '', _id: '', comida: [] }]
+  };
+  usuario2: Subject<Usuario> = new BehaviorSubject(this.usuarioVacio);
+
+
   alimento!: Alimentos;
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -79,7 +98,7 @@ export class DataService {
         next: (value: any) => {
           if (value.ok){
             this.usuario = value.usuario;
-            //this.usuario.next(value.usuario);
+            this.usuario2.next(value.usuario);
             resolve(true);
           }else{
             this.router.navigateByUrl('/login');
@@ -122,7 +141,6 @@ export class DataService {
     return this.http.patch<ResponseApiFull>(this.urlUser+user._id, user);
   }
   updateBloqueComida(user: { bloqueComida: BloqueComida[] }, id: string): Observable<ResponseApiFull>{
-    console.log(user)
     return this.http.patch<ResponseApiFull>(this.urlUser+id, user);
   }
 

@@ -10,7 +10,6 @@ export interface Usuario {
   edad: string,
   altura: string,
   peso: string,
-  comida: [Comida],
   bloqueComida: [BloqueComida]
 }
 export interface BloqueComida{
@@ -30,6 +29,4 @@ export interface Comida{
   cantidad: string
 }
 
-export interface bloqueEnviar{
-  bloque?: BloqueComida
-}
+
