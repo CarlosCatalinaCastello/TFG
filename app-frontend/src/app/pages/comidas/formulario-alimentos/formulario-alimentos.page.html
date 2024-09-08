@@ -1,0 +1,88 @@
+<ion-content>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/agregar-comida">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>AÑADIR ALIMENTO AL LISTADO</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="addAlimento()" routerLink="/agregar-comida">Aceptar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <form [formGroup]="formComida">
+    <ion-toolbar>
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-floating mb-3">
+            <ion-input label="Nombre" labelPlacement="floating" type="text" formControlName="nombre"
+                       id="nombre" class="form-control">
+            </ion-input>
+            <ion-label></ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item class="mb-3">
+            <ion-select label="Tipo Alimento" labelPlacement="floating" formControlName="tipo"
+                        id="tipo" class="form-control">
+              <ion-select-option value="Frutas">Frutas</ion-select-option>
+              <ion-select-option value="Verduras">Verduras</ion-select-option>
+              <ion-select-option value="Cereales y granos">Cereales y granos</ion-select-option>
+              <ion-select-option value="Productos lácteos">Productos lácteos</ion-select-option>
+              <ion-select-option value="Proteínas de origen animal">Proteínas de origen animal</ion-select-option>
+              <ion-select-option value="Legumbres y frutos secos">Legumbres y frutos secos</ion-select-option>
+              <ion-select-option value="Aceites y grasas">Aceites y grasas</ion-select-option>
+              <ion-select-option value="Azúcares y edulcorantes">Azúcares y edulcorantes</ion-select-option>
+              <ion-select-option value="Bebidas">Bebidas</ion-select-option>
+              <ion-select-option value="Alimentos procesados">Alimentos procesados</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-floating mb-3">
+            <ion-input label="Descripcion" labelPlacement="floating" type="text" formControlName="descripcion"
+                       id="descripcion" class="form-control">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-floating mb-3">
+            <ion-input label="Imagen (URL)" labelPlacement="floating" type="text" formControlName="img"
+                       id="img" class="form-control">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-label><b>MACRONUTRIENTES</b></ion-label>
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-floating mb-3">
+            <ion-input label="Grasas (gramos)" labelPlacement="floating" type="text" formControlName="grasa"
+                       id="grasa" class="form-control">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item class="form-floating mb-3">
+            <ion-input label="Proteinas (gramos)" labelPlacement="floating" type="text" formControlName="proteina"
+                       id="proteina" class="form-control">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item class="form-floating mb-3">
+            <ion-input label="Carbohidratos (gramos)" labelPlacement="floating" type="text"
+                       formControlName="carbohidrato"
+                       id="carbohidrato" class="form-control">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </form>
+</ion-content>

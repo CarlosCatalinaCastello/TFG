@@ -1,0 +1,82 @@
+<ion-header *ngIf="bloqueComida" class="ion-no-border text-center">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/agregar-comida"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Detalles de las comidas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="bloqueComida">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <b>{{bloqueComida.nombreBloque}}</b>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        Alimento
+      </mat-expansion-panel-header>
+    <ion-card-content *ngFor="let alimento of comidas">
+      <ion-row>
+        <ion-col>
+          Alimento
+        </ion-col>
+        <ion-col>
+          {{alimento.nombre}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Número de Ración
+        </ion-col>
+        <ion-col>
+          {{alimento.cantidad}} g
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Proteinas
+        </ion-col>
+        <ion-col>
+          {{alimento.proteina}} g
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Carbohidratos
+        </ion-col>
+        <ion-col>
+          {{alimento.carbohidrato}} g
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Grasas
+        </ion-col>
+        <ion-col>
+          {{alimento.grasa}} g
+        </ion-col>
+      </ion-row>
+      <ion-icon slot="end" class="icon-delete" name="trash-outline" (click)="deleteAlimento(alimento._id)"></ion-icon>
+    </ion-card-content>
+      <ion-row>
+        <ion-col>
+          Total calorias:
+        </ion-col>
+        <ion-col>
+          {{totalCalorias}} Kclas
+        </ion-col>
+      </ion-row>
+    </mat-expansion-panel>
+  </ion-card>
+
+  <canvas id="chart" class="chart"></canvas>
+
+</ion-content>

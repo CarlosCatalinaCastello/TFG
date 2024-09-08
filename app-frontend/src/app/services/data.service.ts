@@ -19,7 +19,6 @@ export class DataService {
 
   token: string = '';
   usuario!: Usuario;
-  // TODO rellenar campos
 
   usuarioVacio: Usuario = {
     _id: '',
